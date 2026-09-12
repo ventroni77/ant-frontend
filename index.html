@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ANTHILL // Offline Cortex</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Simulation canvas (background layer) -->
+  <canvas id="sim"></canvas>
+  <div class="vignette"></div>
+
+  <!-- Top-left: Consciousness -->
+  <section class="panel consciousness" id="consciousnessPanel">
+    <div class="row between">
+      <span class="label">CONSCIOUSNESS</span>
+      <span class="big-pct" id="consValue">100%</span>
+    </div>
+    <div class="meter">
+      <div class="meter-fill" id="consFill"></div>
+      <div class="meter-knob" id="consKnob"></div>
+    </div>
+    <div class="row scale">
+      <span>0</span><span>25</span><span>75</span>
+      <span class="tick-active" id="consMid">100</span>
+      <span class="mercy">MERCY</span>
+    </div>
+    <div class="state-title" id="consState">FULLY CONSCIOUS</div>
+    <div class="row between sub">
+      <span id="consFlavor">Grievance, schism, and nobody is eating.</span>
+      <span class="dim" id="thinkingCount">12 thinking ants</span>
+    </div>
+  </section>
+
+  <!-- Top-center: Toolbar -->
+  <div class="toolbar" id="toolbar">
+    <button class="tool" title="Draw" data-i="pencil">✎</button>
+    <button class="tool" title="Erase" data-i="erase">▢</button>
+    <button class="tool" title="Grid" data-i="grid">▦</button>
+    <button class="tool" title="Nest" data-i="nest">⌂</button>
+    <button class="tool" title="Spark" data-i="spark">⚡</button>
+    <button class="tool" title="Hand" data-i="hand">✋</button>
+    <span class="tool-sep"></span>
+    <button class="tool accent" id="playBtn" title="Play/Pause">▶</button>
+    <button class="tool" title="Step">▷</button>
+    <button class="tool" title="Reset" id="resetBtn">↺</button>
+    <button class="tool danger" id="muteBtn" title="Mute">🔇</button>
+    <span class="tool-sep"></span>
+    <button class="tool" title="Fullscreen">⤢</button>
+    <button class="tool" title="View">👁</button>
+    <button class="tool" title="Help">?</button>
+  </div>
+
+  <!-- Top-right: Cognition feed -->
+  <section class="panel feed" id="feedPanel">
+    <div class="row between header">
+      <span class="label">COGNITION FEED</span>
+      <span class="badge-alert">⚠ OFFLINE CORTEX</span>
+    </div>
+    <div class="feed-list" id="feedList"></div>
+  </section>
+
+  <!-- Middle-right: Ideologies -->
+  <section class="panel ideologies" id="ideologiesPanel">
+    <div class="row between header">
+      <span class="label">IDEOLOGIES</span>
+      <span class="dim" id="ideoCount">3 live</span>
+    </div>
+    <div id="ideoList"></div>
+  </section>
+
+  <!-- Bottom-left: Food / stats -->
+  <section class="panel stats" id="statsPanel">
+    <div class="row between">
+      <span class="label">FOOD / MIN</span>
+      <span class="label">PRODUCTIVITY <span id="prodArrow">▲</span></span>
+    </div>
+    <div class="row between values">
+      <span class="food-value" id="foodValue">882</span>
+      <span class="prod-value" id="prodValue">-18%</span>
+    </div>
+    <div class="row between micro">
+      <span id="colonyState">COLONY HEALTHY</span>
+      <span class="dim">baseline 107min/hr at 0%</span>
+    </div>
+    <canvas id="graph"></canvas>
+    <div class="stat-grid">
+      <div><span class="stat-k">MEETINGS</span><span class="stat-v" id="stMeetings">1</span></div>
+      <div><span class="stat-k">IDEAS</span><span class="stat-v" id="stIdeas">2</span></div>
+      <div><span class="stat-k">DREAD</span><span class="stat-v" id="stDread">92%</span></div>
+      <div><span class="stat-k">IDLE</span><span class="stat-v" id="stIdle">16%</span></div>
+      <div><span class="stat-k">HOARDED</span><span class="stat-v" id="stHoarded">0</span></div>
+      <div><span class="stat-k">COHERENCE</span><span class="stat-v" id="stCoherence">0.92</span></div>
+      <div><span class="stat-k">FPS</span><span class="stat-v" id="stFps">60</span></div>
+    </div>
+  </section>
+
+  <!-- Bottom-right: status -->
+  <div class="status-bar" id="statusBar">
+    <span id="pauseState">PAUSED</span>
+    <span class="dot">•</span>
+    <span class="offline">⬤ OFFLINE CORTEX</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
